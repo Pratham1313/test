@@ -7,7 +7,7 @@ import Home from './Components/Home'
 import Signup from './Components/Signup'
 
 function App() {
-  const[income,setincome] = useState(""); //income
+  const[income,setincome] = useState(0); //income
   const[income_submit,setincome_submit] = useState(false) //??????????
   const[expenses,setexpense] = useState([]);
 

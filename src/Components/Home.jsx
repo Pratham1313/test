@@ -73,16 +73,18 @@ function AddExpense({ income, expenses, setexpense }) {
   const [datee, setdatee] = useState("");
   const [type, set_type] = useState("Food");
 
-  var Foodd=1;
+  let Foodd=1;
   var Housing=1;
   var Travel=1;
   var Health=1;
   var Other=1;
 
   let initial=0;
+  let len =0 ;
+
   expenses.map((item)=>
   {
-      initial=initial+item.exp_amount
+      len = len +1;
       if(item.type=="Food") 
       return(Foodd+=item.exp_amount);
       if(item.type=="Housing") 
@@ -95,7 +97,14 @@ function AddExpense({ income, expenses, setexpense }) {
       return(Other+=item.exp_amount)
   })
 
-  let Remaining= income-initial;
+  for (let i=0 ;i<=len;i++)
+  {
+    initial = Number(initial) + Number(expenses[i].exp_amount)
+  }
+
+ 
+
+  let Remaining= Number(income)-Number(initial);
 
   const options = {
     title: "My Expense's",
@@ -126,6 +135,7 @@ function AddExpense({ income, expenses, setexpense }) {
     if (!exp_name) return;
     if (!datee) return;
     if (!type) return;
+    console.log(len)
 
     setexpense(() => [...expenses, list]);
     console.log(expenses);
